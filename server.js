@@ -4,12 +4,14 @@ var bodyParser = require('body-parser')
 var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectId;
 var bcrypt = require('bcryptjs');
+var jwt = require('jwt-simple');
 
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
 var db = null;
+var JWT_TOKEN = 'catmeows';
 
 MongoClient.connect("mongodb://localhost:27017/mittens",function(err, dbConn){
     if(!err)
@@ -83,7 +85,25 @@ app.post('/users',function(req,res,next){
 });
 
 
-app.post('/users/signin',function(req,res,next){
+app.put('/users/signin',function(req,res,next){
+
+
+
+  db.collection('users',function(err,usersCollection){
+        usersCollection.findOne({username : req.body.username},function(err, user){
+            bcrypt.compare(req.body.password , user.password, function(err, result){
+                if(result){
+                    var token = jwt.encode(user, JWT_TOKEN);
+                    
+                    return res.json({token : token});
+                }
+                else{
+                    return res.status(400).send();
+                }
+            })
+        })
+    })
+  
     
 });
 

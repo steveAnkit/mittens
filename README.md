@@ -16,6 +16,8 @@ To connect with mongo server type in cmd
 
 :> mongo
 
-(mittens is the db and meows is the collection)
+(mittens is the db and meows is the collection for saving meows and users is the collection for saving the user credentials)
+
+* Start your server.js with (nodemon server.js) command. Node will pick the changes automatically
 
 
