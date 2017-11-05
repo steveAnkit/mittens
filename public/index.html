@@ -1,0 +1,111 @@
+<html ng-app="mittens">
+<head>
+<title>Mittens</title>
+    
+    <link rel="stylesheet" type="text/css"  href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="angular-route.js"></script>
+    <script>
+    
+        var app = angular.module('mittens',["ngRoute"]);
+        
+        app.config(function($routeProvider){
+            
+            $routeProvider
+                  .when("/",{
+                templateUrl : "home.html",
+                controller : "HomeController"
+            })
+                .when("/signUp",{
+                templateUrl : "signup.html",
+                controller : "SignUpController"
+            });
+            
+        });
+        
+        app.controller('HomeController',['$scope','$http',function($scope,$http){
+           
+            var getMeows = function(){
+                $http.get('/meows').then(function(response){
+                
+                    if(angular.isDefined(response.data))
+                        $scope.meowsList = response.data;
+                });
+            }
+            
+            getMeows();
+            
+            $scope.submitNewMeows = function(){
+                $http.post('/meows',{newMeow : $scope.newMeow}).then(function(response){
+                    
+                    getMeows();
+                    $scope.newMeow = '';
+                
+                });
+            }
+            
+            
+           $scope.removeMeows = function(meow){
+               
+               $http.put('/meows/remove',{meow : meow}).then(function(response){
+                    getMeows();
+                });
+           }
+           
+           $scope.signIn = function(){    
+               $http.post('/users/signin',{username : $scope.username ,password : $scope.password  })
+                   .then(function(response){
+                   
+                   alert('succesfully signed in');
+               },function(err){
+                   alert('bad credentials');
+               });
+            
+           }
+            
+        }]);
+        
+        
+        app.controller('SignUpController',['$scope','$http',function($scope,$http){
+            
+            
+            $scope.signUp = function(){
+                
+                var user = {
+                    username : $scope.userName,
+                    password : $scope.password
+                }
+                
+            
+                $http.post('/users',{user : user}).then(function(response){
+                        $scope.userName = '';
+                        $scope.password = ''; 
+                
+                });
+            
+            }
+            
+            
+        }]);
+        
+    
+    </script>  
+    
+    
+</head>
+<body>
+    
+    <a href="#"><h1 class="page-title">Mittens</h1></a>
+    
+   <div data-ng-view></div>
+    
+    
+    </body>
+
+</html>
+
+
+<!--placeholder="What do you have to meow today?"-->

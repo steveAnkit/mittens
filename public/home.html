@@ -1,0 +1,35 @@
+ <div class="row feed" >
+    
+    <div class="col-md-4">
+        
+        <h4>Login</h4>
+        <br/><br/>
+        <input type="text" size="30" placeholder="Username" ng-model="username">
+        <br/><br/>
+        <input type="password" size="30" placeholder="Password" ng-model="password">
+        <br/><br/>
+        <button type="button" class="btn" ng-click="signIn()">Sign in</button>
+        <a href="#!/signUp">Not a member? Sign Up</a>
+        
+        
+    </div>
+    
+        <div class="col-md-8">
+            
+            <div class="new-meows inline">
+                 <input type="text" class="form-control" ng-model='newMeow'  >
+            <button type="button" class="btn" ng-click='submitNewMeows()'>Submit</button>    
+            </div>
+            
+            <h3 ng-repeat='m in meowsList'>  
+                <i class="fa fa-user-o" aria-hidden="true"></i>
+                    {{m.text}}
+                <span ng-click="removeMeows(m)"><i class="fa fa-times" aria-hidden="true"></i></span>
+            
+            
+            </h3>
+        
+        </div>
+    
+    
+    </div>

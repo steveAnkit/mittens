@@ -1,0 +1,52 @@
+
+
+.feed {
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 50px;
+    /*border: 1px solid black;*/
+    min-height: 500px;
+}
+
+
+.feed h3 {
+    padding: 10px;
+    border: 1px solid grey;
+    margin : 10px;
+}
+
+.page-title
+{
+    margin-left: 110px;
+    margin-top: 10px;
+}
+
+.new-meows{
+    padding: 10px;
+    border: 1px solid grey;
+    margin : 10px;
+    width: 97%;
+    display: flex;
+   justify-content:space-between;
+}
+
+.new-meows button{
+    width: 80px;
+    margin-left: 5px;
+ }
+.new-meows input{
+    width: calc(100% - 80px)
+ }
+
+.signUpForm{
+    margin-left: 110px;
+    margin-top: 50px;
+}
+
+.signUpForm button {
+    margin-top: 10px;
+}
+
+
+
+
