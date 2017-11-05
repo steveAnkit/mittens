@@ -2,6 +2,13 @@
     
     <div class="col-md-4">
         
+        <div ng-show="currentUser">Logged in as : {{currentUser}} 
+            <br/>
+            <a href="" ng-click="logout()">Log Out</a>
+
+
+        </div>
+        <div ng-hide="currentUser">
         <h4>Login</h4>
         <br/><br/>
         <input type="text" size="30" placeholder="Username" ng-model="username">
@@ -10,13 +17,14 @@
         <br/><br/>
         <button type="button" class="btn" ng-click="signIn()">Sign in</button>
         <a href="#!/signUp">Not a member? Sign Up</a>
+        </div>
         
         
     </div>
     
         <div class="col-md-8">
             
-            <div class="new-meows inline">
+            <div class="new-meows inline" ng-show="currentUser">
                  <input type="text" class="form-control" ng-model='newMeow'  >
             <button type="button" class="btn" ng-click='submitNewMeows()'>Submit</button>    
             </div>
