@@ -21,3 +21,14 @@ Go to :c/data/db and type in cmd
 * Start your server.js with (nodemon server.js) command. Node will pick the changes automatically
 
 
+### Currently Below functionality is working
+> Registration and sign in
+> CRUD on tweets
+
+### What more can be done
+> UI can be changed as now it is pretty basic
+> Profile pic along with the tweets
+> Follwers functionality
+
+
+Feel free to fork this repository and contribute
