@@ -1,18 +1,18 @@
-# mittens
-This is just a fun project in MEAN stack
+# Mittens
+This is just a fun project in MEAN stack. It is similar to twitter where you can tweets about meows(cats)
 
-To get start with this project
+## To get start with this project
 
 First go to the project directory and start Node js server by typing in cmd
 :> node server.js
 
-To start mongodb
+## To start mongodb
 
 Go to :c/data/db and type in cmd
 
 :> mongod
 
-To connect with mongo server type in cmd
+## To connect with mongo server type in cmd
 
 :> mongo
 
